@@ -2,3 +2,4 @@
 
 Documentations
 - (H2O Wave)[https://wave.h2o.ai/]
+- [H2O Wave](https://wave.h2o.ai/)
