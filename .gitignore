@@ -1,0 +1,14 @@
+# ignore jupyter notebook backup folders
+.ipynb_checkpoints
+
+# mac files
+.DS_Store
+
+# ms power point files
+*.pptx
+
+# Python仮想環境ファイル
+app/pyenv/*
+
+# Waveで使われるキャッシュ等
+__pycache__
