@@ -1,0 +1,9 @@
+[App]
+Name = "ai.h2o.wave.obj_det_app"
+Version = "0.1.0"
+Title = "物体検出アプリ"
+Description = "画像内の自動車を検出"
+LongDescription = "AppDescription.md"
+
+[Runtime]
+Module = "app"
