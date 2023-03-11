@@ -1,6 +1,6 @@
 # Object_Detection_Scoring_App
 
-画像内の自動車の検知を実施
+画像内の自動車の検知を実施  
 <img src="./img/app_display.png" width="700">
 
 ---
