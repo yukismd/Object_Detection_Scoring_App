@@ -1,6 +1,7 @@
 # Object_Detection_Scoring_App
 
-![img](./img/app_display.png)
+<img src="./img/app_display.png" width="100">
+
 
 ---
 [./notebooks/Scoring.ipynb](./notebooks/Scoring.ipynb) : MLOps上へのスコアリングAPIへのリクエストの実施例
