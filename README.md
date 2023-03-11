@@ -1,6 +1,6 @@
 # Object_Detection_Scoring_App
 
-<img src="./img/app_display.png" width="100">
+<img src="./img/app_display.png" width="1000">
 
 
 ---
