@@ -10,7 +10,7 @@
 [./app/prod/](./app/prod/) : アプリのプログラム  
 [./app/tutorials/](./app/tutorials/) : アプリ作成の参考プログラム
 
-(Document)[H2O Wave](https://wave.h2o.ai/)
+(Document)[H2O Wave](https://wave.h2o.ai/)  
 (日本語チュートリアル)[動画](https://www.youtube.com/watch?v=cuz67LkGeLc&t=2956s), [コード](https://github.com/yukismd/H2O_Wave_Tutorial)
 
 ---
