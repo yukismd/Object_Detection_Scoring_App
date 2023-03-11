@@ -10,7 +10,11 @@
 [./app/](./app/) : アプリのプログラム
 
 ---
-[./H2OAppStore/](./H2OAppStore/) : H2O AI Cloudへのアップロードファイル一式
+[./H2OAppStore/](./H2OAppStore/) : H2O AI Cloudへのアップロードファイル一式  
+
+[App Store - App Depeloper Guide](https://h2oai.github.io/h2o-ai-cloud/developerguide)  
+[Setting Up Your Local Machine for H2O AI Cloud Wave App Development (Blog)](https://h2o.ai/blog/setting-up-your-local-machine-for-h2o-ai-cloud-wave-app-development/)
+
 
 ---
 Documentations
