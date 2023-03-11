@@ -5,5 +5,10 @@ Documentations
 - [H2O Wave](https://wave.h2o.ai/)
 
 ---
-[./app/](./app/)
+[./notebooks/Scoring.ipynb](./notebooks/Scoring.ipynb) : MLOps上へのスコアリングAPIへのリクエストの実施例
 
+---
+[./app/](./app/) : アプリのプログラム
+
+---
+[./H2OAppStore/](./H2OAppStore/) : H2O AI Cloudへのアップロードファイル一式
