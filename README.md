@@ -1,6 +1,6 @@
 # Object_Detection_Scoring_App
 
-
+![img](./img/app_display.png)
 
 ---
 [./notebooks/Scoring.ipynb](./notebooks/Scoring.ipynb) : MLOps上へのスコアリングAPIへのリクエストの実施例
