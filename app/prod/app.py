@@ -33,12 +33,6 @@ def od_scoring(q: Q):
     r = requests.post(url=URL, json=data)   # スコアリングのリクエスト
     q.client.request_return = r
 
-    '''
-    if not q.client.request_return:
-        q.client.threshold = 0.5    # デフォルトでThresholdを0.5とする
-    '''
-    #q.client.threshold = 0.5    # デフォルトでThresholdを0.5とする
-
     image_processing(q)
 
 
