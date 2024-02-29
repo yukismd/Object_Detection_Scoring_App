@@ -16,7 +16,7 @@ from torchvision.utils import draw_bounding_boxes
 from torchvision.transforms.functional import to_pil_image
 
 
-URL = 'https://model.internal.dedicated.h2o.ai/bffea6ac-818e-41bd-81d8-aba7228929e3/model/score'   # APIエンドポイント
+#URL = 'https://model.internal.dedicated.h2o.ai/9c67271f-4b10-4633-b417-a1b8413d5cb9/model/score'   # APIエンドポイント
 
 # current directory(App実行 directory)上の元画像と結果画像のフォルダ
 IMG_IN = 'images_in'        # インプット画像の格納フォルダ。App実行上のパスに配置
@@ -30,14 +30,10 @@ def od_scoring(q: Q):
     img = cv2.imread(q.client.image_local_path)
     img_encode = base64.b64encode(cv2.imencode(".png", img)[1]).decode()
     data = {"fields": ["input"], "rows": [[img_encode]]}
-    r = requests.post(url=URL, json=data)   # スコアリングのリクエスト
+    #r = requests.post(url=URL, json=data)   # スコアリングのリクエスト
+    print('スコアリング直前のq.client.endpointurl: ', q.client.endpointurl)
+    r = requests.post(url=q.client.endpointurl, json=data)   # スコアリングのリクエスト
     q.client.request_return = r
-
-    '''
-    if not q.client.request_return:
-        q.client.threshold = 0.5    # デフォルトでThresholdを0.5とする
-    '''
-    #q.client.threshold = 0.5    # デフォルトでThresholdを0.5とする
 
     image_processing(q)
 
@@ -86,6 +82,18 @@ async def result_render(q: Q):
         ]
     )
 
+async def endpoint_render(q: Q):
+    '''
+    エンドポイントURLのレンダリング
+    '''
+    print('q.args.endpointurl: ', q.args.endpointurl)
+    print('q.client.endpointurl: ', q.client.endpointurl)
+    q.page['endpoint'] = ui.form_card(
+        box='1 2 2 1',
+        items=[
+            ui.textbox(name='endpointurl', label='APIエンドポイント', value=q.client.endpointurl, required=True),
+        ]
+    )
 
 @app('/')
 async def serve(q: Q):
@@ -104,8 +112,11 @@ async def serve(q: Q):
         del q.page['readme']
         q.client.current_page = 'scoring'
 
+        if q.client.endpointurl is None:   # APIエンドポイントがまだ入力されてない場合。入力してスコアリングが実施されると実行されない
+            await endpoint_render(q)
+
         q.page['upload'] = ui.form_card(
-            box='1 2 2 8',
+            box='1 3 2 7',
             items=[
                 ui.text_m("画像（jpg, png）をアップして下さい。"),
                 ui.file_upload(name='file_upload', 
@@ -119,6 +130,10 @@ async def serve(q: Q):
         )
 
         if q.args.file_upload:   # 画像ファイルがアップされた場合の処理
+            
+            if q.client.endpointurl is None:   # APIエンドポイントの初期化。以降、そのエンドポイントを利用。新しいエンドポイントを設定する場合はブラウザリフレッシュか「このアプリに関して」へ
+                q.client.endpointurl = q.args.endpointurl
+            await endpoint_render(q)
 
             q.client.threshold = 0.5    # デフォルトでConfidence LevelのThresholdを0.5とする
             q.args.slider = q.client.threshold  # アップされるとSliderも初期化
@@ -135,9 +150,9 @@ async def serve(q: Q):
             await result_render(q)
 
     else:  # ヘッダーの「このアプリに関して」をクリックした場合、もしくはデフォルト
-        print('このアプのページ ----------------')
         del q.page['upload'], q.page['uploaded_file'], q.page['result_file'], q.page['operation']
         q.client.current_page = 'readme'
+        q.client.endpointurl = None
         
         q.page['readme'] = ui.tall_info_card(
             box='1 2 5 8', 
