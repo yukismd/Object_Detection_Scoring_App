@@ -2,6 +2,7 @@
 
 画像内の自動車の検知を実施  
 <img src="./img/app_display.png" width="700">
+[デモ動画](https://www.youtube.com/watch?v=N_ZuRwqcyWQ)
 
 ---
 [./notebooks/Scoring.ipynb](./notebooks/Scoring.ipynb) : MLOps上へのスコアリングAPIへのリクエストの実施例
